@@ -1,33 +1,41 @@
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#e1f5fe', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#fff'}}}%%
 graph TD
-    %% 互联网接入 - 使用红色圆圈表示
-    Internet((Internet<br/>ISP: Bell 1Gbps)) --- BellRouter
-
-    %% Bell 主路由区域 (192.168.0.0/24 子网)
+    %% 先定义子图和节点，确保它们乖乖待在框内
     subgraph Subnet_0 [Bell Network: 192.168.0.0/24]
         direction TB
-        BellRouter[Bell Home Hub<br/>(Main Router)<br/>IP: 192.168.0.1]
+        BellRouter["Bell Home Hub<br/>(Main Router)<br/>IP: 192.168.0.1"]
         
         %% 无线 Wi-Fi 连接
-        BellRouter -.->|Wi-Fi| DaughterMBA[Daughter's<br/>MacBook Air<br/>IP: 192.168.0.10]
-        BellRouter -.->|Wi-Fi| DaughteriPad[Daughter's<br/>iPad<br/>IP: 192.168.0.11]
-        BellRouter -.->|Wi-Fi| DaughterWatch[Daughter's<br/>Watch<br/>IP: 192.168.0.12]
+        DaughterMBA["Daughter's<br/>MacBook Air<br/>IP: 192.168.0.10"]
+        DaughteriPad["Daughter's<br/>iPad<br/>IP: 192.168.0.11"]
+        DaughterWatch["Daughter's<br/>Watch<br/>IP: 192.168.0.12"]
+        
+        BellRouter -.->|"Wi-Fi"| DaughterMBA
+        BellRouter -.->|"Wi-Fi"| DaughteriPad
+        BellRouter -.->|"Wi-Fi"| DaughterWatch
     end
 
-    %% 跨公寓的长网线连接 (物理连接)
-    BellRouter ===|Long Ethernet Cable<br/>(Cross Apartment)| TPLinkRouter
-
-    %% TP-Link 二级路由区域 (192.168.1.0/24 子网)
     subgraph Subnet_1 [TP-Link Network: 192.168.1.0/24]
         direction TB
-        TPLinkRouter[TP-Link Router<br/>(Secondary Router)<br/>IP: 192.168.1.1]
+        TPLinkRouter["TP-Link Router<br/>(Secondary Router)<br/>IP: 192.168.1.1"]
         
         %% 用户设备连接
-        TPLinkRouter -.->|Wi-Fi/Wired| MyMBP[My<br/>MacBook Pro<br/>IP: 192.168.1.10]
-        TPLinkRouter -.->|Wi-Fi| MyiPhone[My<br/>iPhone 13 mini<br/>IP: 192.168.1.11]
-        TPLinkRouter -.->|Wi-Fi| MyLenovo[My<br/>Lenovo Laptop<br/>IP: 192.168.1.12]
-        TPLinkRouter -.->|Wi-Fi| MyKindle[My<br/>Kindle<br/>IP: 192.168.1.13]
+        MyMBP["My<br/>MacBook Pro<br/>IP: 192.168.1.10"]
+        MyiPhone["My<br/>iPhone 13 mini<br/>IP: 192.168.1.11"]
+        MyLenovo["My<br/>Lenovo Laptop<br/>IP: 192.168.1.12"]
+        MyKindle["My<br/>Kindle<br/>IP: 192.168.1.13"]
+
+        TPLinkRouter -.->|"Wi-Fi/Wired"| MyMBP
+        TPLinkRouter -.->|"Wi-Fi"| MyiPhone
+        TPLinkRouter -.->|"Wi-Fi"| MyLenovo
+        TPLinkRouter -.->|"Wi-Fi"| MyKindle
     end
+
+    %% 定义完子图后，再进行跨区域的连接
+    Internet(("Internet<br/>ISP: Bell 1Gbps")) --- BellRouter
+
+    %% 跨公寓的长网线连接 (修复了粗实线带文字的语法)
+    BellRouter == "Long Ethernet Cable<br/>(Cross Apartment)" === TPLinkRouter
 
     %% 样式美化
     classDef router fill:#b3e5fc,stroke:#01579b,stroke-width:2px;
