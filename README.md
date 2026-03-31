@@ -70,3 +70,26 @@ graph TD
 | **Mine** | iPhone 13 mini | `192.168.1.11` | Wi-Fi (TP-Link) |
 | **Mine** | Lenovo Laptop | `192.168.1.12` | Wi-Fi (TP-Link) |
 | **Mine** | Kindle | `192.168.1.13` | Wi-Fi (TP-Link) |
+
+## 📍 Physical Topology Details
+* **Bell Home Hub (Main Router):** Located in the [Living Room]. Connected to the ISP via fiber optic cable.
+* **TP-Link Router (Secondary):** Located in the [Bedroom/Office]. Connected to the Bell Router via a Cat6 Ethernet cable (Bell LAN Port 1 to TP-Link WAN Port).
+* All wireless devices are connected using the 5GHz or 2.4GHz bands depending on distance and capability.
+
+## ⚙️ Device Configurations & Services
+**1. Bell Home Hub 3000/4000 (Gateway)**
+* **Role:** Modem, Main Router, DHCP Server, DNS Forwarder
+* **Subnet:** 192.168.0.0/24
+* **DHCP Range:** 192.168.0.50 - 192.168.0.200
+* **Wi-Fi Security:** WPA2/WPA3 Personal
+
+**2. TP-Link Router**
+* **Role:** Secondary Router (NAT enabled), Wi-Fi Access Point, DHCP Server
+* **Subnet:** 192.168.1.0/24
+* **DHCP Range:** 192.168.1.50 - 192.168.1.200
+* **Wi-Fi Security:** WPA2/WPA3 Personal
+
+## 🔒 Security & Credential Storage
+To ensure the security of the home network, default router administrator passwords have been changed to strong, randomly generated alphanumeric strings. 
+
+**Credential Storage Method:** All network login credentials, including router admin passwords, ISP PPPoE credentials, and Wi-Fi passphrases, are securely encrypted and stored using a dedicated Password Manager (e.g., [Bitwarden / 1Password / Apple Keychain]). No plain-text files are used to store sensitive network information.
