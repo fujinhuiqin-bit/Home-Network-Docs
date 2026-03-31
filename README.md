@@ -72,8 +72,8 @@ graph TD
 | **Mine** | Kindle | `192.168.1.13` | Wi-Fi (TP-Link) |
 
 ## 📍 Physical Topology Details
-* **Bell Home Hub (Main Router):** Located in the [Living Room]. Connected to the ISP via fiber optic cable.
-* **TP-Link Router (Secondary):** Located in the [Bedroom/Office]. Connected to the Bell Router via a Cat6 Ethernet cable (Bell LAN Port 1 to TP-Link WAN Port).
+* **Bell Home Hub (Main Router):** Located in my daughter's bedroom. Connected to the ISP via fiber optic cable.
+* **TP-Link Router (Secondary):** Located in my bedroom. Connected to the Bell Router via a Cat6 Ethernet cable (Bell LAN Port 1 to TP-Link WAN Port).
 * All wireless devices are connected using the 5GHz or 2.4GHz bands depending on distance and capability.
 
 ## ⚙️ Device Configurations & Services
@@ -92,4 +92,4 @@ graph TD
 ## 🔒 Security & Credential Storage
 To ensure the security of the home network, default router administrator passwords have been changed to strong, randomly generated alphanumeric strings. 
 
-**Credential Storage Method:** All network login credentials, including router admin passwords, ISP PPPoE credentials, and Wi-Fi passphrases, are securely encrypted and stored using a dedicated Password Manager (e.g., [Bitwarden / 1Password / Apple Keychain]). No plain-text files are used to store sensitive network information.
+**Credential Storage Method:** All network login credentials, including router admin passwords, ISP PPPoE credentials, and Wi-Fi passphrases, are securely encrypted and stored using a dedicated Password Manager, Bitwarden. No plain-text files are used to store sensitive network information.
